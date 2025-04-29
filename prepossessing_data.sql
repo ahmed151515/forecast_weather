@@ -52,8 +52,8 @@ SET weather_status = CASE
 END;
 
 select
-id,
-MONTH(date) AS month,
+    id,
+    MONTH(date) AS month,
     DAY(date) AS day,  
     date,
     weather_code,
@@ -69,11 +69,11 @@ MONTH(date) AS month,
     LEAD(weather_status) OVER (ORDER BY id) AS next_day_weather_status
 into final_new from new;
 
--- delete date 1940-1-1
+-- delete date 2025-4-23
 begin transaction
-delete from final_new where format(date,'yyyy-M-d') = '1940-1-1'
+delete from final_new where format(date,'yyyy-M-d') = '2025-4-23'
 commit
-select date from final_new where format(date,'yyyy-M-d') = '1940-1-1'
+select date from final_new where format(date,'yyyy-M-d') = '2025-4-23'
 select format(date,'yyyy-M-d') from final_new --where format(date,'yyyy-M-d') = '1940-1-1'
 select count(weather_status) as count ,weather_status from new group by  weather_status;
 select count(weather_status)  from new ;
