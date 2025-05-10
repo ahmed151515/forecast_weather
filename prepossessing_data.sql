@@ -4,7 +4,7 @@ select * from new;
 
 -- null check
 SELECT *
-FROM final_new
+FROM new
 WHERE 
     date IS NULL
     OR weather_code IS NULL
@@ -15,7 +15,7 @@ WHERE
     OR wind_gusts_10m_max IS NULL
     OR wind_direction_10m_dominant IS NULL
     OR shortwave_radiation_sum IS NULL
-    OR et0_fao_evapotranspiration IS NULL or weather_status is null or next_day_weather_status is null;
+    OR et0_fao_evapotranspiration IS NULL ;
 
 -- delete all null
 begin transaction
@@ -31,7 +31,7 @@ WHERE
     OR wind_gusts_10m_max IS NULL
     OR wind_direction_10m_dominant IS NULL
     OR shortwave_radiation_sum IS NULL
-    OR et0_fao_evapotranspiration IS NULL or weather_status is null or next_day_weather_status is null;
+    OR et0_fao_evapotranspiration IS NULL;
 commit
 rollback
 -- add weather_status 
